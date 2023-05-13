@@ -8,7 +8,17 @@ use App\Http\Resources\SerieResource;
 use Illuminate\Support\Facades\DB;
 
 class Series extends Controller
+
 {
+    /**
+     * Create a new AuthController instance.
+     *
+     * @return void
+     */
+    public function __construct()
+    {
+        $this->middleware('auth:api', ['except' => ['login']]);
+    }
     public function addserie(Request $request){
         $request->validate([
             'titre' => 'required',

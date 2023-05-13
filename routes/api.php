@@ -6,7 +6,7 @@ use App\Http\Controllers\categories;
 use App\Http\Controllers\Film;  
 use App\Http\Controllers\Series; 
 use App\Http\Controllers\Episodes; 
-
+use App\Http\Controllers\AuthController;
 /*
 |--------------------------------------------------------------------------
 | API Routes
@@ -21,7 +21,7 @@ use App\Http\Controllers\Episodes;
 Route::middleware(['auth:sanctum'])->get('/user', function (Request $request) {
     return $request->user();
 });
-Route::group(['middelware'=>'api'],function($router){
+Route::group(['middleware'=>'api'],function($router){
 Route::post('/cat',[categories::class,'addcategorie']);
 Route::get('/cat/{id}',[categories::class,'getcatbyid']);
 Route::put('/cat',[categories::class,'updatecat']);
@@ -45,6 +45,9 @@ Route::get('/episode/{id}',[Episodes::class,'getepisode']);
 Route::put('/episode',[Episodes::class,'updateepisode']);
 Route::delete('/episode/{id}',[Episodes::class,'deleteepisode']);
 Route::get('episode/serie/{id}',[Episodes::class,'getepisodesbyserie']);
+Route::post('/login',[AuthController::class,'login']);
+Route::get('/logout',[AuthController::class,'logout']);
+Route::post('/register',[AuthController::class,'register']);
 
 
 

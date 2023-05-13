@@ -8,6 +8,17 @@ use Illuminate\Support\Facades\DB;
 use App\Http\Resources\CategorieResource;
 class categories extends Controller
 {
+    
+    /**
+     * Create a new AuthController instance.
+     *
+     * @return void
+     */
+    public function __construct()
+    {
+        $this->middleware('auth:api', ['except' => ['login']]);
+    }
+
     public function addcategorie(Request $request){
         $request->validate([
             'nomcategorie'=>'required|unique:categories'
