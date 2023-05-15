@@ -81,7 +81,7 @@ class Film extends Controller
         $film->categorie_id=$r->categorie_id;
         $film->url=Storage::url($videoname);
         $film->duration=$r->duration;
-        $film->save();
+        $film->update();
         Storage::disk('public')->put($videoname, file_get_contents($r->file('url')));
         Storage::disk('thumbnail')->put($imgname, file_get_contents($r->file('thumbnial_url')));
         return response()->json(['message'=>'updated'],200);

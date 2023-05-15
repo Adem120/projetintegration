@@ -7,6 +7,8 @@ use App\Http\Controllers\Film;
 use App\Http\Controllers\Series; 
 use App\Http\Controllers\Episodes; 
 use App\Http\Controllers\AuthController;
+use App\Http\Controllers\Resetpass;
+
 /*
 |--------------------------------------------------------------------------
 | API Routes
@@ -33,7 +35,7 @@ Route::get('/film/{id}',[Film::class,'getfilmbyid']);
 Route::put('/film',[Film::class,'updatefilm']);
 Route::delete('/film/{id}',[Film::class,'deletefilm']);
 Route::get('film/categorie/{id}',[Film::class,'getfilmbycat']);
-Route::post('/serie',[Series::class,'addserie']);
+Route::post('/serie',[Series::class,'addserie']);   
 Route::get('/serie',[Series::class,'getseries']);
 Route::get('/serie/{id}',[Series::class,'getseriebyid']);
 Route::put('/serie',[Series::class,'updateserie']);
@@ -48,6 +50,8 @@ Route::get('episode/serie/{id}',[Episodes::class,'getepisodesbyserie']);
 Route::post('/login',[AuthController::class,'login']);
 Route::get('/logout',[AuthController::class,'logout']);
 Route::post('/register',[AuthController::class,'register']);
+Route::post('/resetpassword',[Resetpass::class,'resetpassword']);
+Route::post('/changepassword',[Resetpass::class,'changepassword']);
 
 
 
